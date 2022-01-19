@@ -4,20 +4,17 @@ Original example from Microsoft -
 https://github.com/microsoft/vscode-extension-samples/tree/main/fsprovider-sample
 It was modified to meet condition for issue reproduction
 
-This extension implements an in-memory file system to show-case the [filesystem provider api](https://github.com/Microsoft/vscode/blob/51a880315fd0ec2cafb511a17de48ec31802ba6d/src/vs/vscode.d.ts#L4968). It serves two purposes:
-
-* Be a sample/reference for extension authors that want to implement a filesystem provider
-* Be a test for other extensions that *falsely* assume text document always live on disk.
-
-To *get started* you need this:
+Step to reproduce issue(MS Windows was used):
 
 * install this extension
-* when *not* having a workspace opened, select 'F1 > [MemFS] Setup Workspace' (optionally save the workspace now)
-* select 'F1 > [MemFs] Create Files' and notice how the explorer is now populated
-* ... try things out, e.g. IntelliSense in memfs-files, create new files, save them, etc
-* open `file.txt` and make changes
-* 'F1 > [MemFS] Delete "file.txt', observe that the editor is now indicating that the file is deleted
-* 'F1 > [MemFS] Add "file.txt', observe that the editor content is reset and the '(delete)' annotation disappeared
-* select 'F1 > [MemFs] Delete Files' or reload to restart
+* Run extension
+* Open any folder on your PC.
+* Execute command `Create Virtual File and Open`("memfs.init"). Command does following:
+1. Command creates virtual file based on opened folder path by appending `dummy/subfolder/test.txt'`.
+2. Command opens TextEditor for created virtual file .
+* Change content of file and save
 
-![sample screenshot](https://github.com/Microsoft/vscode-extension-samples/raw/main/fsprovider-sample/sample.png)
+Problem, watcher triggers are not executed.
+Following watchers were used - https://github.com/815are/virtualFileWatchIssue/blob/main/src/extension.ts#L70-L77
+
+Scenario work fine in VSCode 1.63.2 and below. Issue happens only in VSCode Insiders 1.64.0

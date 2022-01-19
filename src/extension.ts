@@ -52,7 +52,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 			// Create virtual file
 			const fileUri = workspaceUri.with({
-				path: posix.join('dummy', 'subfolder', 'testx.txt'),
+				path: posix.join('dummy', 'subfolder', 'test.txt'),
 			});
 
 			if (initialized) {
