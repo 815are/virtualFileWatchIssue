@@ -39,21 +39,34 @@
 				"command": "memfs.reset",
 				"title": "Delete Files",
 				"category": "MemFS"
+			},
+			{
+				"command": "memfs.readDirect",
+				"title": "Read file - direct",
+				"category": "MemFS"
+			},
+			{
+				"command": "memfs.readWorkspace",
+				"title": "Read file - use VSCode workspace",
+				"category": "MemFS"
 			}
 		],
 		"menus": {
 			"commandPalette": [
 				{
-					"command": "memfs.init",
-					"when": "workbenchState == workspace"
+					"command": "memfs.init"
 				},
 				{
-					"command": "memfs.reset",
-					"when": "workbenchState == workspace"
+					"command": "memfs.reset"
 				},
 				{
-					"command": "memfs.workspaceInit",
-					"when": "workbenchState != workspace"
+					"command": "memfs.workspaceInit"
+				},
+				{
+					"command": "memfs.readDirect"
+				},
+				{
+					"command": "memfs.readWorkspace"
 				}
 			]
 		}
