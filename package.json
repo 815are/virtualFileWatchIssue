@@ -1,88 +1,60 @@
 {
-	"name": "vscode-memfs",
-	"displayName": "MemFS - a file system provider sample",
-	"description": "Showcase for the file system provider API, also useful for testing again document that are not on disk.",
-	"version": "0.0.3",
-	"publisher": "vscode-samples",
-	"private": true,
-	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples"
-	},
-	"engines": {
-		"vscode": "^1.32.0"
-	},
-	"categories": [
-		"Other"
-	],
-	"activationEvents": [
-		"onFileSystem:memfs",
-		"onCommand:memfs.workspaceInit",
-		"onCommand:memfs.init",
-		"onCommand:memfs.reset"
-	],
-	"main": "./out/src/extension",
-	"contributes": {
-		"commands": [
-			{
-				"command": "memfs.workspaceInit",
-				"title": "Setup Workspace",
-				"category": "MemFS"
-			},
-			{
-				"command": "memfs.init",
-				"title": "Create Virtual File and Open",
-				"category": "MemFS"
-			},
-			{
-				"command": "memfs.reset",
-				"title": "Delete Files",
-				"category": "MemFS"
-			},
-			{
-				"command": "memfs.readDirect",
-				"title": "Read file - direct",
-				"category": "MemFS"
-			},
-			{
-				"command": "memfs.readWorkspace",
-				"title": "Read file - use VSCode workspace",
-				"category": "MemFS"
-			}
-		],
-		"menus": {
-			"commandPalette": [
-				{
-					"command": "memfs.init"
-				},
-				{
-					"command": "memfs.reset"
-				},
-				{
-					"command": "memfs.workspaceInit"
-				},
-				{
-					"command": "memfs.readDirect"
-				},
-				{
-					"command": "memfs.readWorkspace"
-				}
-			]
-		}
-	},
-	"scripts": {
-		"vscode:prepublish": "npm run compile",
-		"compile": "tsc -p ./",
-		"lint": "eslint . --ext .ts,.tsx",
-		"watch": "tsc -watch -p ./"
-	},
-	"devDependencies": {
-		"@types/node": "^12.12.0",
-		"@types/vscode": "^1.32.0",
-		"@typescript-eslint/eslint-plugin": "^4.16.0",
-		"@typescript-eslint/parser": "^4.16.0",
-		"eslint": "^7.21.0",
-		"typescript": "^4.4.3"
-	}
+  "name": "watchers-test",
+  "displayName": "Test extension to report bug",
+  "description": "",
+  "version": "0.0.5",
+  "publisher": "sap",
+  "private": true,
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.32.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "watcherTest.global",
+        "title": "Register global watcher",
+        "category": "watcherTest"
+      },
+      {
+        "command": "watcherTest.local",
+        "title": "Register local watcher",
+        "category": "watcherTest"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "watcherTest.global"
+        }
+      ],
+      "explorer/context": [
+        {
+          "command": "watcherTest.local",
+          "group": "test"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "eslint . --ext .ts,.tsx",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.0",
+    "@types/vscode": "^1.32.0",
+    "@typescript-eslint/eslint-plugin": "^4.16.0",
+    "@typescript-eslint/parser": "^4.16.0",
+    "eslint": "^7.21.0",
+    "typescript": "^4.4.3"
+  }
 }
