@@ -1,4 +1,4 @@
-# MemFS
+# Scenario
 
 - install this extension
 - Run extension
